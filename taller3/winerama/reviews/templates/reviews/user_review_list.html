@@ -1,0 +1,10 @@
+{% extends 'reviews/review_list.html' %}
+
+{% block title %}
+{% if user.is_authenticated %}
+  <h2>Hola  <strong> {{ user.username }} </strong> Estas son los Restaurantes que has visitado </h2>
+
+ {% else %}
+    <h2> Lista de tus ultimas opiniones generadas</h2>
+{% endif %}
+{% endblock %}

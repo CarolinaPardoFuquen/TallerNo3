@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+<h1>Register  si</h1>
+{% block body %}
+
+{% block title %}
+<h1> Formulario de Registro</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+<h4>Ingresa la siguientes  campos para vincularte en nuestra aplicación y recibir futuras recomendaciones espaciales para ti</h4>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% endblock %}
+{% endblock %}

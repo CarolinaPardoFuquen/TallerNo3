@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% if user.is_authenticated %}
+  <h2>Hola  <strong> {{ user.username }} </strong>  Aqui te presentamos la Lista de Restaurantes en el Mundo</h2>
+  <h4> Permitenos conocer más sobre ti   <strong> {{ user.username }} </strong> evaluando alguno de estos restaurantes </h4>
+ {% else %}
+    <h2> Lista de los Restaurantes en el Mundo </h2>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+{% if object_list %}
+<div class="row">
+    {% for wine in object_list %}
+    <div class="col-xs-6 col-lg-4">
+        <h4><a href="{% url 'reviews:wine_detail' wine.id %}">
+        {{ wine.name }}
+        </a></h4>
+<!--         <h5>{{ wine.review_set.count }} valoraciones</h5>
+        <h5>{{ wine.average_rating | floatformat }} promedio de los rating </h5> -->
+    </div>
+    {% endfor %}
+</div>
+<div class="row">
+    <div class="pagination">
+    <span class="step-links">
+      {% if is_paginated %}
+      <ul class="pagination">
+        {% if page_obj.has_previous %}
+          <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+          <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+        {% if page_obj.has_next %}
+          <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+        {% else %}
+          <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+      </ul>
+    {% endif %}
+    </span>
+</div>
+</div>
+{% else %}
+    <p>No hay Restaurantes disponibles.</p>
+{% endif %}
+{% endblock %}

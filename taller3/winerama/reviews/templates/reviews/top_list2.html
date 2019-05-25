@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% if user.is_authenticated %}
+  <h2>Restaurantes Recomendados  para tí <strong> {{ user.username }} </strong> En tu ciudad </h2>
+  <h4> Esta es nuestra lista de restaurantes recomendados para tí <strong> {{ user.username }} </strong> la cual pudimos extraer gracias a tus opiniones previas sobre los Restaurantes que has visitado </h4>
+  <h5>También puedes visualizar otras recomendaciones generadas para nuestros usuarios :) </h5>
+ {% else %}
+    <h2> Restaurantes Recomendados para nuestros usuarios por Ciudad </h2>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<form action="" method="get">
+  <select name="user_id" onchange="this.form.submit();">
+    <option selected="selected" disabled>Select a user</option>
+    {% for user in users %}
+    <option value={{user.ID_User}}>{{user.ID_User}}
+    {% endfor %}
+  </select>
+  <table class="table table-bordered">
+<form>
+
+<thead>
+  <tr>
+    <td>Usuario</td>
+    <td>ID Restaurante</td>
+    <td>Nombre Restaurante</td>
+    <td>Ciudad</td>
+  </tr>
+
+</thead>
+
+<tbody>
+  {% if Recomendations %}
+  {% for  Recomendation in  Recomendations %}
+   <tr>
+    <td>{{  Recomendation.ID_User}}</td>
+    <td>{{  Recomendation.ID_Restaurant}}</td>
+    <td>{{  Recomendation.name_Restaurant}}</td>
+    <td>{{  Recomendation.City }}</td>
+    </tr>
+  {% endfor %}
+  {% else %}
+  <h1> Es un usuario Nuevo No hay registros Actualmente </h1>
+  {% endif%}
+
+</tbody>
+</table>
+
+{% if user.is_authenticated %}
+  <h2>Porque sabemos tu Tipo de Comida Favorita, Estos son los mejores restaurantes recomendados para tí en tu ciudad <strong> {{ user.username }} </strong></h2>
+  <h4> Esta es nuestra lista de restaurantes recomendados  por Categoria para tí <strong> {{ user.username }} </strong></h4>
+ {% else %}
+    <h2> Restaurantes Recomendados para nuestros usuarios por Categoria </h2>
+{% endif %}
+
+<table class="table table-bordered">
+<thead>
+  <tr>
+    <td>Usuario</td>
+    <td>ID Restaurante</td>
+    <td>Nombre Restaurante</td>
+    <td>Categoría</td>
+  </tr>
+
+</thead>
+<tbody>
+
+  {% if RecomendationsCat %}
+  {% for  RecomendationCat in  RecomendationsCat %}
+   <tr>
+ 
+    <td>{{  RecomendationCat.ID_User2}}</td>
+    <td>{{  RecomendationCat.ID_Restaurant2}}</td>
+    <td>{{  RecomendationCat.name_Restaurant2}}</td>
+    <td>{{  RecomendationCat.Category }}</td>
+  </tr>
+  {% endfor %}
+  {% else %}
+  <h1> Es un usuario Nuevo No hay registros Actualmente </h1>
+  {% endif%}
+
+
+
+</tbody>
+
+</table>
+
+
+
+
+
+
+{% endblock %}
