@@ -1,3 +1,3 @@
-# Taller de sistemas de Recomendacion Modelos hibridos
+# Taller de sistemas de Recomendacion flujos de datos o Streamming de datos uso Flursr and python Django
 django 
-Taller No 2 de Sistemas de Recomendación.
+Taller No 3 de Sistemas de Recomendación.
