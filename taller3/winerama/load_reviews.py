@@ -13,13 +13,13 @@ from reviews.models import Review, Wine
 def save_review_from_row(review_row):
     review = Review()
 #    review.id = review_row[0]
-    review.user_name = review_row[2]
+    review.user_name = review_row[1]
 #    review.wine = Wine.objects.get(id=review_row[2])
 #    print(review.wine)
-    review.wine = review_row[1]
-    review.rating = review_row[3]
+    review.wine = review_row[2]
+    review.rating = review_row[8]
     review.pub_date = datetime.datetime.now()
-    review.comment = review_row[4]
+    review.comment = review_row[3]
     review.save()
     
     

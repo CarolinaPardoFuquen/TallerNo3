@@ -49,41 +49,5 @@
 </tbody>
 </table>
 
-{% if user.is_authenticated %}
-  <h2>Porque sabemos tu Categoría Favorita, Estos son los mejores restaurantes recomendados para tí en tu ciudad <strong> {{ user.username }} </strong></h2>
-  <h4> Esta es nuestra lista de Películas recomendadas  por Categoria para tí <strong> {{ user.username }} </strong></h4>
- {% else %}
-    <h2> Películas  Recomendadas para nuestros usuarios por Categoria </h2>
-{% endif %}
-
-<table class="table table-bordered">
-<thead>
-  <tr>
-    <td>Usuario</td>
-    <td>ID Película </td>
-    <td>Nombre Película </td>
-    <td>Categoría</td>
-  </tr>
-
-</thead>
-<tbody>
-
-  {% if RecomendationsCat %}
-  {% for  RecomendationCat in  RecomendationsCat %}
-   <tr>
- 
-    <td>{{  RecomendationCat.ID_User2}}</td>
-    <td>{{  RecomendationCat.ID_Restaurant2}}</td>
-    <td>{{  RecomendationCat.name_Restaurant2}}</td>
-    <td>{{  RecomendationCat.Category }}</td>
-  </tr>
-  {% endfor %}
-  {% else %}
-  <h1> Es un usuario Nuevo No hay registros Actualmente </h1>
-  {% endif%}
-
-</tbody>
-
-</table>
 
 {% endblock %}

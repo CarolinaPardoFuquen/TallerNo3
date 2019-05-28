@@ -11,18 +11,18 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{% url 'reviews:wine_list' %}">Restaurantes del mundo</a></li>
-                <li><a href="{% url 'reviews:top_list2' %}">Recomendaciones para nuestros usuarios</a></li>
+                <li><a href="{% url 'reviews:wine_list' %}">Películas</a></li>
+                <li><a href="{% url 'reviews:top_list2' %}">Recomendaciones off line</a></li>
                 <li><a href="{% url 'reviews:review_list' %}">Tendencias del Momento</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-                <li><a href="{% url 'reviews:user_review_list' user.username %}">Hello {{ user.username }}</a></li>
+                <li><a href="{% url 'reviews:user_review_list' user.username %}">Hola {{ user.username }}</a></li>
                 <!--- <li><a href="{% url 'reviews:user_recommendation_list' %}">Wine suggestions</a></li> -->
-                <li><a href="{% url 'auth:logout' %}">Logout</a></li>
+                <li><a href="{% url 'auth:logout' %}">Salir</a></li>
                 {% else %}
-                <li><a href="{% url 'auth:login' %}">Login</a></li>
-                <li><a href="{% url 'reviews:register' %}">Register</a></li>
+                <li><a href="{% url 'auth:login' %}">Ingresa</a></li>
+                <li><a href="{% url 'reviews:register' %}">Registrate</a></li>
                 {% endif %}
             </ul>
         </div>
