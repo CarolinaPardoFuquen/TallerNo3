@@ -12,7 +12,7 @@ from reviews.models import Wine
 def save_wine_from_row(wine_row):
     wine = Wine()
     #wine.id = wine_row[0]
-    wine.name = wine_row[2]
+    wine.name = wine_row[0]
     #wine.CategoryR = wine_row[4]
     #wine.Stars = wine_row[5]
     wine.save()
@@ -30,7 +30,7 @@ if __name__ == "__main__":
             axis=1
         )
 
-        print ("There are {} wines".format(Wine.objects.count()))
+        print ("There are {} movies".format(Wine.objects.count()))
         
     else:
         print ("Please, provide Wine file path")

@@ -59,7 +59,7 @@ class Cluster(models.Model):
 
 
 class Recomendations(models.Model):
-    ID_Restaurant = models.IntegerField()
+    #ID_Restaurant = models.IntegerField()
     ID_User = models.IntegerField(primary_key=False) 
     name_Restaurant = models.CharField(max_length=500)
     City = models.CharField(max_length=100)

@@ -13,7 +13,7 @@ def save_user_from_row(user_row):
     user = User()
     # user.id = user_row[0]
     user.username = user_row[0]
-    user.last_name= user_row[2]
+    #user.last_name= user_row[2]
     user.save()
     
     
