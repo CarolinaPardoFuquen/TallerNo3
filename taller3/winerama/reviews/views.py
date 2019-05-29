@@ -138,8 +138,10 @@ def RecomendationsList(request):
     userscontext = []
     users = Recomendations.objects.distinct('ID_User')
     aux = 0
+    #print ("PRUEBSASSSSSSSSAAA", users)
     for u in users:
-        if aux < 800:
+        #print("CAPFFFFFFFFFFFFFFFFFFF5", users)
+        if aux < 10000:
             aux += 1
             userscontext.append(u)
     context2['users'] = userscontext 

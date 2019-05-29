@@ -83,3 +83,15 @@ class RecomendationsCat(models.Model):
         def __str__(self):
             return self.ID_User2
 
+
+class RecomendationsOnline(models.Model):
+    #ID_Restaurant = models.IntegerField()
+    ID_User = models.IntegerField(primary_key=False) 
+    name_Restaurant = models.CharField(max_length=500)
+    City = models.CharField(max_length=100)
+    class Meta(object):
+        ordering = ['ID_User']
+        """docstring for Meta"""
+        def __str__(self):
+            return self.ID_User
+            
