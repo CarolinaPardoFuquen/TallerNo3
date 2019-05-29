@@ -126,6 +126,11 @@ class WineListView(ListView):
         #print('context', context)
         return context
 
+
+def RecomendationsListOnline(request):
+    return render(request,'reviews/top_listonline.html')
+
+
 def RecomendationsList(request):
     context2 = {}
     recomendationfiltered=[]

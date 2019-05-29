@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% if user.is_authenticated %}
+  <h2>Relicemos el procesamiento Online de las Películas Recomendadas  para tí <strong> {{ user.username }} </strong> lo mejor del entretenimiento lo encuentras aqui!!</h2>
+  <h4> Esta es nuestra NUEVA lista de Películas recomendadas para tí <strong> {{ user.username }} </strong> la cual pudimos extraer gracias a tus ÚLTIMAS opiniones previas  </h4>
+ {% else %}
+    <h2> Películas Recomendadas para nuestros usuarios </h2>
+{% endif %}
+
+{% endblock %}
+
+{% block content %}
+<form action="" method="get">
+  <select name="user_id" onchange="this.form.submit();">
+    <option selected="selected" disabled>Select a user</option>
+    {% for user in users %}
+    <option value={{user.ID_User}}>{{user.ID_User}}
+    {% endfor %}
+  </select>
+  <table class="table table-bordered">
+<form>
+
+<thead>
+  <tr>
+    <td>Usuario</td>
+    <td>ID Películas </td>
+    <td>Nombre Películas </td>
+    <td>Categorías</td>
+  </tr>
+
+</thead>
+
+<tbody>
+  {% if Recomendations %}
+  {% for  Recomendation in  Recomendations %}
+   <tr>
+    <td>{{  Recomendation.ID_User}}</td>
+    <td>{{  Recomendation.ID_Restaurant}}</td>
+    <td>{{  Recomendation.name_Restaurant}}</td>
+    <td>{{  Recomendation.City }}</td>
+    </tr>
+  {% endfor %}
+  {% else %}
+  <h1> Es un usuario Nuevo No hay registros Actualmente </h1>
+  {% endif%}
+
+</tbody>
+</table>
+
+
+{% endblock %}

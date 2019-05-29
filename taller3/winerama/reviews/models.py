@@ -83,16 +83,3 @@ class RecomendationsCat(models.Model):
         def __str__(self):
             return self.ID_User2
 
-
-
-
-
-
-
-
-
-
-
-#class Recomendations(ListView):
-
-    

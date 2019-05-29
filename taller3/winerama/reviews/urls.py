@@ -12,6 +12,7 @@ urlpatterns = [
     # ex: /review/5/
     url(r'^top/', views.top_list, name='top_list'),
     url(r'^reclist/', views.RecomendationsList, name='top_list2'),
+    url(r'^reclistonline/', views.RecomendationsListOnline, name='top_listonline'),
     #url(r'^reclist/', views.RecomendationsListCat, name='top_list2'),
     url(r'^review/(?P<review_id>[0-9]+)/$', views.review_detail, name='review_detail'),
     # ex: /wine/
