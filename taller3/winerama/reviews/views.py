@@ -128,7 +128,69 @@ class WineListView(ListView):
 
 
 def RecomendationsListOnline(request):
-    return render(request,'reviews/top_listonline.html')
+    context3 = {}
+    recomendationfiltered=[]
+    #recomendationcatfiltered=[]
+    userscontext = []
+    users = Recomendations.objects.distinct('ID_User')
+    aux = 0
+    #print ("PRUEBSASSSSSSSSAAA", users)
+    for u in users:
+        #print("CAPFFFFFFFFFFFFFFFFFFF5", users)
+        if aux < 10000:
+            aux += 1
+            userscontext.append(u)
+    context3['users'] = userscontext 
+    #def get_queryset(self):
+    #    result = super(RecomendationsList, self).get_queryset()
+    #    filter_uid =self.request.GET.get('user_id')
+    #    print ("methodsssssssssssssssssssssssssssss", filter_uid)
+    Recomendation = Recomendations.objects.all() #este es el query set
+    #RecomendationCat = RecomendationsCat.objects.all() #este es el query set
+    for r in Recomendation:
+        #print ("RECCCCC", r.ID_User)
+        #print ("RECCCC1", request.GET.get('user_id'))
+        if request.GET.get('user_id'):
+            #print ("AAAAAAAAAAAAAAAAA")
+            if int(request.GET.get('user_id')) == int(r.ID_User):
+                #print ("LLEENAAANDOOOOOO")
+                recomendationfiltered.append(r)
+        else:
+            if str(request.user) == "AnonymousUser":
+                if int(r.ID_User) == 1:
+                    recomendationfiltered.append(r)
+
+            elif int(request.user.id) == int(r.ID_User):
+                recomendationfiltered.append(r)
+
+    #or rc in RecomendationCat:
+    #    if request.GET.get('user_id'):
+    #        if int(request.GET.get('user_id')) == int(rc.ID_User2):
+    #            recomendationcatfiltered.append(rc)
+    #    else:
+    #        if str(request.user) == "AnonymousUser":
+    #            if int(rc.ID_User2) == 1:
+    #                recomendationcatfiltered.append(rc)
+
+    #        elif int(request.user.id) == int(rc.ID_User2):
+    #            recomendationcatfiltered.append(rc)
+
+    #print ("REQUESTTTTTTTTTTTTTT", request.GET.get('user_id'))
+    #if request.GET.get('user_id'):
+    #    recomendationsFilter = RecomendationsFilter(request.GET, queryset=Recomendation)
+    #    #recomendationsFilter = RecomendationsFilter(request.GET, queryset=0)
+    #    print ('ENTROOOOOOOOOOOOOO')
+    #    context2['Recomendations'] = recomendationsFilter
+    #    context2['RecomendationsCat'] = RecomendationCat
+    #    return render(request,'reviews/top_list2.html', context2)
+    if request.GET.get('user_id') or request.user.id == None or request.user.id:
+        context3['Recomendations'] = recomendationfiltered
+        #context3['RecomendationsCat'] = recomendationcatfiltered
+    else:
+        context3['Recomendations'] = Recomendation
+        #context3['RecomendationsCat'] = RecomendationCat
+    #print (context2)
+    return render(request,'reviews/top_listonline.html', context3)
 
 
 def RecomendationsList(request):

@@ -2,10 +2,13 @@
 
 {% block title %}
 {% if user.is_authenticated %}
-  <h2>Relicemos el procesamiento Online de las Películas Recomendadas  para tí <strong> {{ user.username }} </strong> lo mejor del entretenimiento lo encuentras aqui!!</h2>
+  <h3>Relicemos el procesamiento Online de las Películas Recomendadas  para tí <strong> {{ user.username }} </strong> también puedes Seleccionar un usuario y ver las Nuevas recomendaciones ONLINE generadas para el, lo mejor del entretenimiento lo encuentras aqui!!</h3>
   <h4> Esta es nuestra NUEVA lista de Películas recomendadas para tí <strong> {{ user.username }} </strong> la cual pudimos extraer gracias a tus ÚLTIMAS opiniones previas  </h4>
+  <h3> Recomendación ONLINE </h3>
+
  {% else %}
     <h2> Películas Recomendadas para nuestros usuarios </h2>
+    <h4> Recomendación ONLINE </h4>
 {% endif %}
 
 {% endblock %}
