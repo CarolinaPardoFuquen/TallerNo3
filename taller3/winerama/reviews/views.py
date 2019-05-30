@@ -9,6 +9,7 @@ from .suggestions import update_clusters
 from django.views.generic.list import ListView
 from .filters import RecomendationsFilter
 import datetime
+from .online import DesarrolloOnline
 
 from django.contrib.auth.decorators import login_required
 
@@ -141,6 +142,8 @@ def RecomendationsListOnline(request):
             aux += 1
             userscontext.append(u)
     context3['users'] = userscontext 
+
+
     #def get_queryset(self):
     #    result = super(RecomendationsList, self).get_queryset()
     #    filter_uid =self.request.GET.get('user_id')
@@ -162,6 +165,23 @@ def RecomendationsListOnline(request):
 
             elif int(request.user.id) == int(r.ID_User):
                 recomendationfiltered.append(r)
+
+    user_id = int(request.GET.get('user_id'))
+    print("AAAA",user_id)
+
+    try:
+        current, online_list = DesarrolloOnline.online(user_id)
+
+        context3['current'] = current.to_dict(orient='records')[0]
+        context3['online'] = online_list.to_dict(orient='records')
+        print(current.to_dict(orient='records'))
+    except Exception:
+        print('Este usuario no tiene recomendaciones online',user_id)
+
+   
+    
+    #print(online_list.to_dict(orient='records'))
+    #print(online_list)
 
     #or rc in RecomendationCat:
     #    if request.GET.get('user_id'):

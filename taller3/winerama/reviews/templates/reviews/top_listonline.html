@@ -18,12 +18,13 @@
   <select name="user_id" onchange="this.form.submit();">
     <option selected="selected" disabled>Select a user</option>
     {% for user in users %}
-    <option value={{user.ID_User}}>{{user.ID_User}}
+    <option value={{user.ID_User}}>{{user.ID_User}}</option>
     {% endfor %}
   </select>
-  <table class="table table-bordered">
-<form>
+</form>
 
+
+<table class="table table-bordered">
 <thead>
   <tr>
     <td>Usuario</td>
@@ -46,8 +47,73 @@
   <h1> Es un usuario Nuevo No hay registros Actualmente </h1>
   {% endif%}
 
+
+
 </tbody>
 </table>
+
+<br>
+
+<table class="table table-bordered">
+<thead>
+  <tr>
+    <td>Usuario: {{current.userId }}</td>
+    <td>Pelicula: {{current.movieId}} </td>
+    <td>Rating: {{current.rating}} </td>
+    <td>Hora: {{current.timestamp}} </td>
+    <td>Fecha: {{current.date}} </td>
+  </tr>
+
+</thead>
+<!-- <tbody>
+
+  <tr>
+    <td>Usuario: {{current.userId }}</td>
+  </tr>
+  <tr>
+    <td>Pelicula: {{current.movieId}}</td>
+  </tr>
+  <tr>
+    <td>Rating: {{current.rating}}</td>
+  </tr>
+  <tr>
+    <td>Hora: {{current.timestamp}}</td>
+  </tr>
+  <tr>
+    <td>Fecha: {{current.date}}</td>
+  </tr>
+
+</tbody> -->
+</table>
+
+<br>
+
+<table class="table table-bordered">
+<thead>
+  <tr>
+    <td>Titulo</td>
+    <td>Genero </td>
+  </tr>
+
+</thead>
+
+<tbody>
+  {% if online %}
+  {% for  row in  online %}
+   <tr>
+    <td>{{  row.title }}</td>
+    <td>{{  row.genres }}</td>
+    </tr>
+  {% endfor %}
+  {% else %}
+  <h1> Este usuario no tiene recomendaciones online </h1>
+  {% endif%}
+
+
+
+</tbody>
+</table>
+
 
 
 {% endblock %}
