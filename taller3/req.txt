@@ -13,7 +13,7 @@ cupshelpers==1.0
 cycler==0.10.0
 defer==1.0.6
 distro-info==0.18
-Django==1.11.20
+Django==1.11.23
 django-bootstrap3==11.0.0
 django-filter==2.1.0
 django-registration==3.0
